@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Electronic Shopping</title>
+  <link id="bootstrap-main" href="css/bootstrap.rtl.css" rel="stylesheet" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link id="bootstrap-responsive" href="css/bootstrap-responsive.rtl.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container-fluid" id="container">
+
+    <div class="page-header">
+      <h1><img src="img/store-logo.png" width="200" height="200"> <span id="lang-title">[title]</span></h1>
+    </div>
+
+    <div class="row-fluid" id="content">
+      <div class="hero-unit span10 offset1">
+        <h1 class="text-center" id="lang-choose-lang"></h1>
+        <p class="text-center"><br/>
+          <a class="btn btn-primary btn-large" id="start-button" data-lang="en">English</a>
+          <a class="btn btn-primary btn-large" id="start-button" data-lang="ar">العربية</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span4 offset8">
+        <a href="#checkout-modal" class="btn btn-success hide" id="checkout-button" data-toggle="modal"><i class="icon-shopping-cart icon-white"></i> Checkout (OMR <span id="amount">0</span>)</a>
+        <a href="#cancel-order-modal" class="btn btn-danger hide" id="cancel-button" data-toggle="modal"><i class="icon-remove icon-white"></i> <span id="lang-cancel-order">[cancel-order]</span></a>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="row-fluid">
+      <div class="span12 text-center">
+        <small><strong><img src="img/masaar-logo.png"> <span id="lang-footer">[footer]</span></strong></small>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="checkout-modal" class="modal hide fade">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3 id="lang-checkout-title">[checkout]</h3>
+    </div>
+    <div class="modal-body">
+      <p>Are you ready to checkout and pay? Your bill came to be <strong>OMR <span id="amount">0</span></strong>.<br/>Click "Cancel" if you would like to change your items.</p>
+      <form>
+        <fieldset>
+          <legend id="lang-your-details">[your-details]</legend>
+          <label id="lang-phone-number">[phone-number]</label>
+          <input type="text" id="phone-number"> <div class="alert alert-error hide" id="checkout-phone-number-error">[invalid-phone-number-error]</div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" id="checkout-modal-cancel-button">[cancel]</a>
+      <a class="btn btn-success" id="checkout-modal-checkout-button"><i class="icon-shopping-cart icon-white"></i> <span id="lang-checkout-button">[checkout]</span></a>
+    </div>
+  </div>
+
+  <div id="cancel-order-modal" class="modal hide fade">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      <h3 id="lang-cancel-order-title">[cancel-order-title]</h3>
+    </div>
+    <div class="modal-body">
+      <p id="lang-cancel-order-confirmation">[cancel-order-confirmation]</p>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" id="cancel-order-modal-no-button">[no]</a>
+      <a class="btn btn-danger" id="cancel-order-modal-cancel-button"><i class="icon-remove icon-white"></i> <span id="lang-cancel-order-button">[cancel-order]</span></a>
+    </div>
+  </div>
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/jquery.i18n.properties.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
