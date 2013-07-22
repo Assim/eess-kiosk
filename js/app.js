@@ -20,6 +20,9 @@ $(document).ready(function() {
     var search_table = "";
     var amount_span = "";
 
+    // Web interface URL
+    var interface_url = "/interface/index.php/";
+
     // Shopping cart data
     var items = [];
     var amount = 0;
@@ -237,7 +240,7 @@ $(document).ready(function() {
 
         // Keeping this variable outside for scope
         var departmentsIdList = new Array();
-        $.ajax("database.php?table=department")
+        $.ajax(interface_url+"departments")
             .done(function(data) {
                 var departments = $.parseJSON(data);
                 var departments_div = $("#store-departments-departments");
@@ -259,7 +262,7 @@ $(document).ready(function() {
             .complete(function(jqXHR, textStatus) {
                 var items_div = $("#store-departments-items");
                 $.each(departmentsIdList, function(index, value) {
-                    $.ajax("database.php?table=item&department_id="+value)
+                    $.ajax(interface_url+"items/department_id/"+value)
                         .done(function(data) {
                             var items = $.parseJSON(data);
                             var HTML = "<table class='table'><tr><th id='lang-product-name'>[product-name]</th><th id='lang-price'>[price]</th><th id='lang-quantity'>[quantity]</th><th><i class='icon-shopping-cart'></i></th></tr>";
@@ -293,7 +296,7 @@ $(document).ready(function() {
         // Update page status
         current_page = PAGE_SEARCH;
 
-        $.ajax("database.php?table=item")
+        $.ajax(interface_url+"items")
             .done(function(data) {
                 var items = $.parseJSON(data);
                 search_table = $("#store-search-table");
@@ -471,12 +474,12 @@ $(document).ready(function() {
 
             // Construct an object for post data
             var postData = {};
-            postData.phone_number = phone_number_field.val();
+            postData.phone = phone_number_field.val();
             postData.amount = amount;
             postData.items = JSON.stringify(items);
 
             // Send data to order table
-            $.post("database.php?table=order&action=create", postData, function() {
+            $.post(interface_url+"orders/add", postData, function() {
 
             })
             .error(function() {
